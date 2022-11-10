@@ -6,6 +6,7 @@ import yaml
 class Student:
     def __init__(self, name: str, email: str, username: str) -> None:
         """Define a student's name, email, username, and their grades."""
+        # referenced from SheetShuttle's ee_grades.py sample plugin
         self.name = name
         self.email = email
         self.username = username
