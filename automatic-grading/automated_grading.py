@@ -19,4 +19,9 @@ class Student:
         }
         
         
-    # TODO: Implement functions for the student class
+    # TODO: Implement functions to add grades for the following:
+    # engineering efforts, projects, surveys, exams, and participation
+    
+    # TODO: Implement function to retrieve grades
+    
+    # TODO: Implement function to send grades to GitHub
