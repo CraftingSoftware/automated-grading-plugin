@@ -44,3 +44,9 @@ def gh_pushfile():
         github_objects.create_file()
     github_objects.post() # post the file to GitHub repository
     return None
+
+if __name__ == "__main__":
+    # Call procedures
+    extract_sheet_data()
+    gh_verification()
+    gh_pushfile()
