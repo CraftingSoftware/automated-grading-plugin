@@ -35,4 +35,12 @@ def gh_verification():
 
 def gh_pushfile():
     """Push markdown files to individual students' repositories."""
+    # TODO: parse through the config file
+    # TODO: check if the markdown file already exists in the repo
+    # TODO: add files as input to the following functions
+    if github_objects.exists():
+        github_objects.update_file()
+    else:
+        github_objects.create_file()
+    github_objects.post() # post the file to GitHub repository
     return None
