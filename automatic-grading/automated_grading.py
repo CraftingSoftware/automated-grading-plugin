@@ -15,4 +15,24 @@ def extract_sheet_data():
         )
     # TODO: collect region data with respect to the individual student
     # TODO: get collected regions using sheet_collector.get_regions() method
-    # TODO:
+    # TODO: assign values to:
+        # region data
+        # region dimensions
+        # set default value types to string
+    # TODO: print region in markdown table format using print_region() method
+    # TODO: write printed region to a markdown file
+    #TODO: remove this line after completion:
+    return None
+
+
+def gh_verification():
+    """Verify permissions for GitHub interaction."""
+    # TODO: check github token
+    # TODO: calculate dimensions of regions and fill empty cells
+    # TODO: remove this line after completion:
+    return None
+
+
+def gh_pushfile():
+    """Push markdown files to individual students' repositories."""
+    return None
