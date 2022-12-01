@@ -20,4 +20,4 @@ TODO: Add section for how to use this plugin
 
 ## Contributors
 
-(Brock Brumfield)[https://github.com/brum0505] | (Aveet Desai)[https://github.com/aveetdesai] | (Nic Ingerson)[https://github.com/ningerson2002] | (Bill Ochieng)[https://github.com/BillOchieng]
+TODO: Add contributors
