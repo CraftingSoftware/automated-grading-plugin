@@ -1,0 +1,19 @@
+# Basic workflow
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+  steps: # TODO: provide steps for build
+    - name: # TODO: provide name for job
+      uses: # TODO: provide uses for job
+      with: # TODO: provide dependency being used for job
