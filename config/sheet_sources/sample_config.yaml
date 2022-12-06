@@ -1,0 +1,40 @@
+source_id: 1vbO2uR_nJv15Ev5LrcVaBl2FY0A37b3CHj1ABrQhaFA
+sheets:
+  - name: Sheet1
+    regions:
+      - name: students_info
+        start: A1
+        end: A38
+        contains_headers: true
+        types: string
+      - name: quizzes_grades
+        start: B1
+        end: J38
+        contains_headers: true
+        types: int
+        fill: true
+      - name: midterm_grades
+        start: K1
+        end: K38
+        contains_headers: true
+        types: int
+        fill: true
+      - name: activities_grades
+        start: L1
+        end: V38
+        contains_headers: true
+        types: float
+        fill: true
+      - name: practical_grades
+        start: W1
+        end: AC38
+        contains_headers: true
+        types: float
+        fill: true
+      - name: lab_and_project_grades
+        start: AD1
+        end: AM38
+        contains_headers: true
+        types: string
+        fill: true
+
