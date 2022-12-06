@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "Automated Grading for SheetShuttle"
+version = "0.1.0"
+description = ""
+authors = [
+    "Brock Brumfield <brumfieldb@allegheny.edu>",
+    "Aveet Desai <desaia@allegheny.edu>",
+    "Nic Ingerson <ingersonmeacham01@allegheny.edu>",
+    "Bill Ochieng <ochieng01@allegheny.edu>"
+]
+readme = "README.md"
+repository = "https://github.com/CMPSC-203-Allegheny-College-Fall-2022/automated-grading-plugin"
+
+[tool.poetry.scripts]
+automated-grading-plugin = "automated-grading-plugin.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.9.6"
+
+[tool.poetry.dev-dependencies]
+taskipy = "^1.8.1"
+flake8 = "^3.9.2"
+pydocstyle = "^6.1.1"
+pylint = "^2.10.2"
+mypy = "^0.910"
+pytest-cov = "^3.0.0"
+pytest = "^7.2.0"
+pymarkdownlnt = "^0.9.8"
+isort = "^5.10.1"
+black = "^22.10.0"
+
+[tool.taskipy.tasks]
+black = { cmd = "black objectprocessor  --check", help = "Run the black checks for source code format" }
+fiximports = { cmd = "isort objectprocessor", help = "Run isort to fix source code imports" }
+fixformat = { cmd = "black objectprocessor", help = "Run the black checks for source code format" }
+isort = { cmd = "isort -c objectprocessor", help = "Run the isort checks for source code" }
+flake8 = { cmd = "flake8 objectprocessor", help = "Run the flake8 checks for source code documentation" }
+markdownlint = { cmd = "poetry run pymarkdown --config .pymarkdown.cfg scan ../writing/reflection.md ../README.md", help = "Run the markdown linter on writing" }
+mypy = { cmd = "poetry run mypy objectprocessor", help = "Run the mypy type checker for potential type errors" }
+pydocstyle = { cmd = "pydocstyle objectprocessor", help = "Run the pydocstyle checks for source code documentation" }
+pylint = { cmd = "pylint objectprocessor", help = "Run the pylint checks for source code documentation" }
+test = { cmd = "pytest -x -s", help = "Run the pytest test suite" }
+test-silent = { cmd = "pytest -x --show-capture=no", help = "Run the pytest test suite without showing output" }
+all = "task black && task isort && task flake8 && task markdownlint && task mypy && task pydocstyle && task pylint && task test"
+lint = "task black && task isort && task flake8 && task markdownlint && task mypy && task pydocstyle && task pylint"
+
+[tool.isort]
+include_trailing_comma = true
+force_single_line = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
