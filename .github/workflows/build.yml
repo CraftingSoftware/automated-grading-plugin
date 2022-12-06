@@ -14,6 +14,45 @@ jobs:
       matrix:
         python-version: ["3.10"]
   steps: # TODO: provide steps for build
-    - name: # TODO: provide name for job
-      uses: # TODO: provide uses for job
-      with: # TODO: provide dependency being used for job
+    - name: Run Plugin
+      uses: 
+      with: 
+    - name: Run Tests
+      uses:
+      with:
+    - name: Run GatorGrader
+      uses:
+      with:
+  spelling:
+    name: Check Spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Run cspell
+        uses: zwaldowski/cspell-action@v1
+        with:
+          paths: "**/*.md"
+          config: .github/cspell.json
+  gatorgrader:
+    runs-on: ubuntu-latest
+    name: Run GatorGrader
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # Install poetry
+      - name: Install Poetry
+        if: always()
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1.14
+      # Run GatorGrader: see config/gatorgrader.yml
+      - name: Run GatorGrader
+        if: always()
+        run:  |
+          pip install gatorgrade
+          gatorgrade --config config/gatorgrade.yml
