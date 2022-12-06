@@ -5,14 +5,25 @@ from sheetshuttle import github_objects
 
 import yaml
 
-def extract_sheet_data():
+
+def google_credentials(key_file):
+    """Verify whether the user has Google credentials."""
+    credentials = sheet_collector.authenticate_api(key_file)
+    # check if credentials are in the config file
+    if credentials in key_file:
+        return True
+    return False
+
+
+def extract_sheet_data(key_file, source_dir):
     """Extract the sheet data and dump it into a config file."""
-    sheets_id = input("Input Google Sheets ID: ")
+    has_credentials = google_credentials(key_file)
+    if has_credentials:
+        raise Exception(f"ERROR: No credentials found in {key_file}")
+    my_sheet = sheet_collector.SheetCollector(key_file, source_dir)
     # TODO: dump ID into a YAML file
     # reference for YAML format: SheetShuttle/config/sheet_sources/sample_config.yml
-    sheet_collector.collect_files(
-        # TODO: add YAML file created as input for this method
-        )
+    my_sheet.collect_files()
     # TODO: collect region data with respect to the individual student
     # TODO: get collected regions using sheet_collector.get_regions() method
     # TODO: assign values to:
