@@ -1,0 +1,72 @@
+setup:
+  cd automatic-grading && poetry install
+  echo "Done installing project dependencies!"
+---
+
+# perform checks on a file
+- automatic-grading/automatic-grading/automated_grading.py:
+    - description: Ensure that the automated_grading.py file exists in the automatic-grading/automatic-grading/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for automated_grading.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+
+# run a command
+- description: Pass the source code formatting checks run by black
+  command: cd automatic-grading && poetry run task black
+
+# run a command
+- description: Pass the linting checks run by flake8
+  command: cd objectproautomatic-gradingcessor && poetry run task flake8
+
+# run a command
+- description: Pass the import checks run by isort
+  command: cd automatic-grading && poetry run task isort
+
+# run a command
+- description: Pass the linting checks run by mypy
+  command: cd automatic-grading && poetry run task mypy
+
+# run a command
+- description: Pass the linting checks run by pydocstyle
+  command: cd automatic-grading && poetry run task pydocstyle
+
+# run a command
+- description: Pass the linting checks run by pylint
+  command: cd automatic-grading && poetry run task pylint
+
+# run a command
+- description: Pass the linting checks run by pymarkdown
+  command: cd automatic-grading && poetry run task markdownlint
+
+# perform checks on a file
+- automatic-grading/docs/getting_started.md:
+    - description: Ensure that the getting_started.md file exists in the automatic-grading/automatic-grading/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for automated_grading.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+- automatic-grading/docs/config_setup.md:
+    - description: Ensure that the config_setup.md file exists in the automatic-grading/automatic-grading/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for automated_grading.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+- automatic-grading/docs/tutorial.md:
+    - description: Ensure that the tutorial.md file exists in the automatic-grading/automatic-grading/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for automated_grading.py
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
