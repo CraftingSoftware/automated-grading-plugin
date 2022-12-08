@@ -1,39 +1,39 @@
-source_id: 1keh8YFl554Wxdr4CskFQ2GNlY2zdmKeMeRS88-oBfIM
+source_id: 162ebb1faecad44e5b329ed6130fc0a1bd2cd977
 sheets:
   - name: Sheet1
     regions:
       - name: students_info
         start: A1
-        end: D18
+        end: A38
         contains_headers: true
         types: string
-      - name: engineering_efforts
-        start: E1
-        end: AJ18
+      - name: Quiz
+        start: B1
+        end: J38
         contains_headers: true
         types: float
         fill: true
-      - name: projects
-        start: AM1
-        end: AO18
+      - name: Midterm Exam
+        start: K1
+        end: K38
         contains_headers: true
         types: float
         fill: true
-      - name: surveys
-        start: AR1
-        end: AW18
+      - name: Activities
+        start: L1
+        end: V38
         contains_headers: true
         types: float
         fill: true
-      - name: exams
-        start: AZ1
-        end: BA18
+      - name: Practical
+        start: W1
+        end: AC38
         contains_headers: true
         types: float
         fill: true
-      - name: participation
-        start: BD1
-        end: BD18
+      - name: Labs
+        start: AD1
+        end: AL38
         contains_headers: true
         types: float
         fill: true
