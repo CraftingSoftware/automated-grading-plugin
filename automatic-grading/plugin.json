@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "automated_grading-367301",
+    "private_key_id": "45fe97cded27fe0c0a9107df3687cac7244b3e4a",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDFJgRamTbO69+r\niIJAdAFKWJarx5lth+QoBxZHeh67irO7WY8N0JGMcNXRqK7ZfjUZXZMhMCNajTE4\n24SaUJTY/f9jYbMfZ7HgQGr7YYXZQgofmokmxrTW6xpFYXumaTZ/o2q8KUBunzJA\nAlAd+e1JY3IDOiRG8YQT5QM44Xl+1mZDOdJMUPNCfuFu+18vSj9LUyiq2XJdBfTe\n0bBJXNGFhXo941iHHSuG5S+oOrHRbThuwQU5YxgOXqRoRmLFtr7XKS0sr3cI1p0w\nuZukjMiyXa8Pi/99oVq2EAP5KmqY44PPfEaMTTsCbrMxZ95ZlKkB2FbSQHv15A+S\ndFCginjtAgMBAAECggEAMsk01OvkIRDFKSh8uULI9FB22+CKpxsbDK6qsBYG5bP4\n0dnjzqC8ZcvJYP2NsUxgPF0NIj8G1HRLykROV/xLI8zmpcDMxlnNiiG+DWzVcJ6h\nAfwquZj1i+m7dkUC997hoabEv5z20qhi5vdRkS9JT571B1zKbJYZupBDsLrws9nu\nXLnI7FQJytXLSdsyg8jW2IKJ2k1XoHrtMSk4F7ZwR8FK/S9n6cJZQXFZCiVYC2Q4\n0KsaxkfUfrdkoUIGbcJZ1YLXeuoq19cSrCWG0OT/keKX9EY1ZRTLRghlew/iv4Sv\n40osumwCvE0vbvbn20gcAp1POheMkt32F13Mk9wUtwKBgQDqKnCHssKeAPTDHVQ1\nwvXYaV+T+WWFjKi9OnQ/n5oqfq0/x08/q9uFaeeWaEDhS+ntCrfXwkAsueqAXmLi\nrvWiaGvlFvkGOdft9jMGgb2g8B3vtbDpOQ1cLx7wFp5zaHeMfQUaOIoEgHm4zlce\nAW5GYYgnbvrrT5aDamncLibciwKBgQDXh/is7Tq/0BGahaBkqQBolz/mxr1XQfoR\nPSPScHLuBRmG34E9WGH8L2fAfGO25iWKzoYO/Pvzvrjbau791ikd83bHRgGvrziC\nw/kyixHOvhGnB9FuyeyY+Kil/LavNXbyLKdwT9bRLfWO7XlSjJn5IxRcAh06LidC\njBO0ne3XZwKBgQC2OYCImRvKSYQvskst6yHV32p5hML0QpmtaCe+uz0FhL7duwR4\n0AxsrhWCfm6+5IyN4qFeTdQS+jr62nipXu3YDNqp1E7GAY1/qO/cSGqBK1qgiAu7\n8qHq8uBohbGYrdsagM/Pr9/30OLoZep1dzeRnaSOy1aId87xRYZLyb6EMQKBgQDO\nwBVRNQQ9SggI9ZRF20SUEDrxUsYAdT6/2KmLTelB4Ex7b92XDjh4ZLUfFXPF2II8\n5B3/NLkwOU001iBKCW1J2OmhAMvPTsNj1UAwNu2vJ+7hDoPdxf+bQjTtfT11V1Ex\nwJoiB8RmxrKfF7hg8pUlQ3xdQn3s+KcalCq3ASRNkwKBgCh6gh0JNBpo6q988GOC\nEZa7D0FN/Kn5cbPusw0LTNLlaO6r5aM0HhHJT1AvEFN6CZvmWWg2tiZPk6CBlTIF\nm+SzBWYvGNmvsbY7jDu4q4f2OT7AZ8MUEtK0Cv2mzukYQetUyqfWiqij/1vKqOPQ\nkGS0j/m2FAVNYt3i1uoDjU4H\n-----END PRIVATE KEY-----\n",
+    "client_email": "team0ne-service@automated_grading-367301.iam.gserviceaccount.com",
+    "client_id": "101781537716307818714",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/team0ne-service%40apr-generator-plugin-367301.iam.gserviceaccount.com"
+}
