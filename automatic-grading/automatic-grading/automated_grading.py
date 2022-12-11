@@ -1,3 +1,4 @@
+"""This file when put into `sheetshuttle/plugins`, can run to display the student grades whenever an update is made."""
 from sheetshuttle import sheet_collector
 from sheetshuttle import util
 from sheetshuttle import github_interaction
@@ -5,34 +6,35 @@ from sheetshuttle import github_objects
 
 import yaml
 
-
-def google_credentials(key_file):
-    """Verify whether the user has Google credentials."""
-    credentials = sheet_collector.authenticate_api(key_file)
-    # check if credentials are in the config file
-    if credentials in key_file:
-        return True
-    return False
+# file that has authentication info, don't push `"n_key.json"` to Github!
+key_file = "n_key.json"
+# Directory containing config info for our sheets
+src_directory = "config/sheet_sources"
 
 
-def extract_sheet_data(key_file, source_dir):
-    """Extract the sheet data and dump it into a config file."""
-    has_credentials = google_credentials(key_file)
-    if has_credentials:
-        raise Exception(f"ERROR: No credentials found in {key_file}")
-    my_sheet = sheet_collector.SheetCollector(key_file, source_dir)
-    # TODO: dump ID into a YAML file
-    # reference for YAML format: SheetShuttle/config/sheet_sources/sample_config.yml
-    my_sheet.collect_files()
+def collect(sheets_keys_file, sheets_config_directory, **kwargs):
+    """This function collects and fetches information from google sheets."""
+    # has_credentials = google_credentials(key_file)
+    # if has_credentials:
+    #     raise Exception(f"ERROR: No credentials found in {key_file}")
+    collector = sheet_collector.SheetCollector(key_file, src_directory)
+    # sheet collector object called collector with args key_file and src_dir
+    collector.collect_files()
+
     # TODO: collect region data with respect to the individual student
-    # TODO: get collected regions using sheet_collector.get_regions() method
-    # TODO: assign values to:
-        # region data
-        # region dimensions
-        # set default value types to string
+    region_data = (
+        collector.sheets_data["APR-Generator-Config"]
+        .regions["Sheet1_Students_Info"]
+        .data
+    )
+
+    # covert region data into a dictionary so as to assign keys and values
+    my_data = region_data.to_dict()
+
+    # set default value types to string
     # TODO: print region in markdown table format using print_region() method
     # TODO: write printed region to a markdown file
-    #TODO: remove this line after completion:
+    # TODO: remove this line after completion:
     return None
 
 
@@ -53,8 +55,9 @@ def gh_pushfile():
         github_objects.update_file()
     else:
         github_objects.create_file()
-    github_objects.post() # post the file to GitHub repository
+    github_objects.post()  # post the file to GitHub repository
     return None
+
 
 if __name__ == "__main__":
     # Call procedures
