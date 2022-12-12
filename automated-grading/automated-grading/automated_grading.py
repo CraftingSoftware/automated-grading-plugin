@@ -9,7 +9,7 @@ import yaml
 # file that has authentication info, don't push `"n_key.json"` to Github!
 key_file = "n_key.json"
 # Directory containing config info for our sheets
-src_directory = "config/sheet_sources"
+src_directory = "config.yml"
 
 
 def collect(sheets_keys_file, sheets_config_directory, **kwargs):
@@ -20,16 +20,15 @@ def collect(sheets_keys_file, sheets_config_directory, **kwargs):
     collector = sheet_collector.SheetCollector(key_file, src_directory)
     # sheet collector object called collector with args key_file and src_dir
     collector.collect_files()
-
+    old_data_dict = {}
     # TODO: collect region data with respect to the individual student
-    region_data = (
-        collector.sheets_data["APR-Generator-Config"]
-        .regions["Sheet1_Students_Info"]
-        .data
-    )
-
-    # covert region data into a dictionary so as to assign keys and values
-    my_data = region_data.to_dict()
+    for region_data in collector.sheets_data["config"].regions:
+        print(region_data.data)
+        # TODO:iterate through diff regions
+        # covert region data into a dictionary so as to assign keys and values
+        my_data = region_data.data
+        new_data_dict = my_data.to_dict()
+        old_data_dict.update(new_data_dict)
 
     # set default value types to string
     # TODO: print region in markdown table format using print_region() method
@@ -64,3 +63,10 @@ if __name__ == "__main__":
     extract_sheet_data()
     gh_verification()
     gh_pushfile()
+
+# sheetshuttle -pd /Users/rawlings/Desktop/Software class/automated-grading-plugin/automated-grading/automated-grading -pn automated_grading
+
+# sheetshuttle -pd plugin -pn automated-grading -cd plugin_config
+# sheetshuttle -pd /Users/rawlings/Desktop/Software class/automated-grading-plugin/automatic-grading/automatic-grading -pn APR_Generator
+
+# /Users/rawlings/Desktop/Software class/automated-grading-plugin/automatic-grading/automatic-grading
