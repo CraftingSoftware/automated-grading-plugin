@@ -9,10 +9,10 @@ import yaml
 # file that has authentication info, don't push `"n_key.json"` to Github!
 key_file = "n_key.json"
 # Directory containing config info for our sheets
-src_directory = "config.yml"
+src_directory = "config/sheet_sources"
 
 
-def collect(sheets_keys_file, sheets_config_directory, **kwargs):
+def run(sheets_keys_file, sheets_config_directory, **kwargs):
     """This function collects and fetches information from google sheets."""
     # has_credentials = google_credentials(key_file)
     # if has_credentials:
@@ -29,14 +29,39 @@ def collect(sheets_keys_file, sheets_config_directory, **kwargs):
         my_data = region_data.data
         new_data_dict = my_data.to_dict()
         old_data_dict.update(new_data_dict)
+        for row_count in range(len(new_data_dict["Name"])):
+            if row_count == 0:
+                master = make_dict(
+                    new_data_dict["Student_Name"][row_count],
+                    new_data_dict["Studentgh"][row_count],
+                    new_data_dict["Prof_Name"][row_count],
+                    new_data_dict["Prof_gh"][row_count],
+                    new_data_dict["Total"][row_count],
+                )
+def make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        the_dict = {
+            Student_Name: {
+                "GH":Studentgh,
+                "GH":Studentgh,
+                "GH":Studentgh,
+                "Total":Points},
 
-    # set default value types to string
-    # TODO: print region in markdown table format using print_region() method
-    # TODO: write printed region to a markdown file
-    # TODO: remove this line after completion:
-    return None
+        }
+        return the_dict
+def add_info_dict(master, Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        the_dict = make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        master.update(the_dict)
 
+def add_dict_to_dict(master, the_dict):
+    master.update(the_dict)
+
+<<<<<<< HEAD
 def gh_verification(username, access_token):
+=======
+    # TODO: Start debugging
+
+def gh_verification():
+>>>>>>> 433ff84e9bf1ce15752039ee0559f39c90beebfd
     """Verify permissions for GitHub interaction."""
   # Set up the API endpoint and authorization headers
       # TODO: check github token
@@ -77,8 +102,3 @@ if __name__ == "__main__":
     gh_pushfile()
 
 # sheetshuttle -pd /Users/rawlings/Desktop/Software class/automated-grading-plugin/automated-grading/automated-grading -pn automated_grading
-
-# sheetshuttle -pd plugin -pn automated-grading -cd plugin_config
-# sheetshuttle -pd /Users/rawlings/Desktop/Software class/automated-grading-plugin/automatic-grading/automatic-grading -pn APR_Generator
-
-# /Users/rawlings/Desktop/Software class/automated-grading-plugin/automatic-grading/automatic-grading

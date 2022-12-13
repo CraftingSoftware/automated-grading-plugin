@@ -1,0 +1,6 @@
+site_name: Automated Grading Plugin for SheetShuttle
+
+theme:
+  name: material
+  About: about.md
+
