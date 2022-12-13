@@ -38,14 +38,24 @@ def run(sheets_keys_file, sheets_config_directory, **kwargs):
                     new_data_dict["Prof_gh"][row_count],
                     new_data_dict["Total"][row_count],
                 )
-    def make_dict(Student_Name, studentgh,Prof_Name,  )
+def make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        the_dict = {
+            Student_Name: {
+                "GH":Studentgh,
+                "GH":Studentgh,
+                "GH":Studentgh,
+                "Total":Points},
 
-    # set default value types to string
-    # TODO: print region in markdown table format using print_region() method
-    # TODO: write printed region to a markdown file
-    # TODO: remove this line after completion:
-    return None
+        }
+        return the_dict
+def add_info_dict(master, Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        the_dict = make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
+        master.update(the_dict)
 
+def add_dict_to_dict(master, the_dict):
+    master.update(the_dict)
+
+    # TODO: Start debugging
 
 def gh_verification():
     """Verify permissions for GitHub interaction."""
