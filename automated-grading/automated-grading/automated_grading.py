@@ -55,29 +55,22 @@ def add_info_dict(master, Student_Name, studentgh, Prof_Name, Prof Github, Point
 def add_dict_to_dict(master, the_dict):
     master.update(the_dict)
 
-<<<<<<< HEAD
-def gh_verification(username, access_token):
-=======
-    # TODO: Start debugging
-
-def gh_verification():
->>>>>>> 433ff84e9bf1ce15752039ee0559f39c90beebfd
+# def gh_verification(username, access_token):
     """Verify permissions for GitHub interaction."""
   # Set up the API endpoint and authorization headers
       # TODO: check github token
-    endpoint = "https://api.github.com/user/repos"
-    headers = {
-    "Authorization": "Bearer {}".format(access_token)
-    }
+  # headers = {
+   # "Authorization": "Bearer {}".format(access_token)
+   # }
 
     # Send a GET request to the API endpoint to retrieve the user's repositories
-    response = requests.get(endpoint, headers=headers)
+    # response = requests.get(endpoint, headers=headers)
 
     # Check if the request was successful and the user has permission to interact with GitHub
-    if response.status_code == 200 and response.json()[0]["owner"]["login"] == username:
-        return True
-    else:
-        return False
+    # if response.status_code == 200 and response.json()[0]["owner"]["login"] == username:
+    #    return True
+    # else:
+    #    return False
     # TODO: calculate dimensions of regions and fill empty cells
     # TODO: remove this line after completion:
     # return None
