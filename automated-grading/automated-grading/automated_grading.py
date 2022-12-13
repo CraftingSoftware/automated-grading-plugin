@@ -36,14 +36,26 @@ def collect(sheets_keys_file, sheets_config_directory, **kwargs):
     # TODO: remove this line after completion:
     return None
 
-
-def gh_verification():
+def gh_verification(username, access_token):
     """Verify permissions for GitHub interaction."""
-    # TODO: check github token
+  # Set up the API endpoint and authorization headers
+      # TODO: check github token
+    endpoint = "https://api.github.com/user/repos"
+    headers = {
+    "Authorization": "Bearer {}".format(access_token)
+    }
+
+    # Send a GET request to the API endpoint to retrieve the user's repositories
+    response = requests.get(endpoint, headers=headers)
+
+    # Check if the request was successful and the user has permission to interact with GitHub
+    if response.status_code == 200 and response.json()[0]["owner"]["login"] == username:
+        return True
+    else:
+        return False
     # TODO: calculate dimensions of regions and fill empty cells
     # TODO: remove this line after completion:
-    return None
-
+    # return None
 
 def gh_pushfile():
     """Push markdown files to individual students' repositories."""
