@@ -32,30 +32,48 @@ def run(sheets_keys_file, sheets_config_directory, **kwargs):
         for row_count in range(len(new_data_dict["Name"])):
             if row_count == 0:
                 master = make_dict(
-                    new_data_dict["Student_Name"][row_count],
-                    new_data_dict["Studentgh"][row_count],
+                    new_data_dict["S_Name"][row_count],
+                    new_data_dict["GH"][row_count],
                     new_data_dict["Prof_Name"][row_count],
-                    new_data_dict["Prof_gh"][row_count],
+                    new_data_dict["Prof_GH"][row_count],
                     new_data_dict["Total"][row_count],
                 )
-def make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
-        the_dict = {
-            Student_Name: {
-                "GH":Studentgh,
-                "GH":Studentgh,
-                "GH":Studentgh,
-                "Total":Points},
 
-        }
-        return the_dict
-def add_info_dict(master, Student_Name, studentgh, Prof_Name, Prof Github, Points):
-        the_dict = make_dict(Student_Name, studentgh, Prof_Name, Prof Github, Points):
-        master.update(the_dict)
+
+def make_dict(Student_Name, studentgh, ProfName, ProfGH, Points):
+    the_dict = {
+        Student_Name: {
+            "GH": studentgh,
+            "Prof_Name": ProfName,
+            "Prof_GH": ProfGH,
+            "Total": Points,
+        },
+    }
+    return the_dict
+
+
+def add_info_dict(master, Student_Name, studentgh, ProfName, ProfGH, Points):
+    the_dict = make_dict(Student_Name, studentgh, ProfName, ProfGH, Points)
+    master.update(the_dict)
+    return the_dict
+
 
 def add_dict_to_dict(master, the_dict):
     master.update(the_dict)
+    return the_dict
 
+<<<<<<< HEAD
 # def gh_verification(username, access_token):
+=======
+<<<<<<< HEAD
+def gh_verification(username, access_token):
+=======
+    # TODO: Start debugging
+
+
+def gh_verification():
+>>>>>>> 433ff84e9bf1ce15752039ee0559f39c90beebfd
+>>>>>>> 2c3f2db45de9315e1f3c3f8c21f4f61ec6a3366a
     """Verify permissions for GitHub interaction."""
   # Set up the API endpoint and authorization headers
       # TODO: check github token
