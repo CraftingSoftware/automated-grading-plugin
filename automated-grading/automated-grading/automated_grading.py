@@ -19,6 +19,7 @@ service = build("sheets", "v4", credentials=creds)
 
 # Call the Sheets API
 sheet = service.spreadsheets()
+<<<<<<< Updated upstream
 result = (
     sheet.values()
     .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM1")
@@ -34,6 +35,11 @@ my_manager.collect_config()
 
 # All collected entries can be posted at once
 my_manager.post_all()
+=======
+result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                            range="Sheet1!A1:AM").execute()
+values = result.get('values', [])
+>>>>>>> Stashed changes
 
 # OR they can be posted individually by type
 my_manager.post_issues()
