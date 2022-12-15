@@ -1,5 +1,9 @@
-## Description
- 
+# Automated Grading Tool for SheetShuttle
+
+![BuiltWith](https://img.shields.io/badge/Built%20With-Python-blue)
+
+![AutomatedGradingTool](images/Logo.png)
+
 This plugin utilizes the tools provided by SheetShuttle to automatically push
 grades obtained from a Google Sheet to each individual student's gradebook
 GitHub repository. We decided to use Python to program this plugin as it
@@ -19,9 +23,20 @@ You will also want to create an environment by running `poetry install`.
 ## How to Use this Plugin
  
 For this plugin to work properly a few steps need to be taken carefully. First you will want to visit `https://console.cloud.google.com/apis/dashboard?project=thematic-bloom-370120`. On this source you will want to click where it says `Create new project` and give it a name. Once created, you will want to activate it. Open your project and scroll until you find `Explore and enable API's` and click on it. Once opened, find the option for the Google Sheets API, open and enable this. Next, a service account will need to be created. Find credentials on the left side bar, and click where it says `Manage service accounts`, then click `CREATE SERVICE ACCOUNT`. Give the account a name which will be assigned as an email. Just think of this as creating a new email. Then permissions will need to be assigned. Make this email the role of the `Editor`. Once this is created, go to the spreadsheet that is going to have information pulled from it, and share the email under the `Share` button. Go back to where the service account was created and select on the account itself, which should look like an email. Then find the button that gives you an option to create a key. It should just say `ADD KEY`. This key will basically act as an account password to be able to login in. Select `CREATE NEW KEY` and select the option that says `JSON`. Place the JSON file in the same folder as where your code is, this will create the actual service account.
- 
+
 ## Contributors
- 
-Bill, Nic, Brock, Aveet
 
-
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ningerson2002"><img src="https://avatars.githubusercontent.com/u/89281233?v=4" width="100px;" alt=""/><br /><sub><b>Nic Ingerson</b></sub></a><br /></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/BillOchieng"><img src="https://avatars.githubusercontent.com/u/79288574?v=4" width="100px;" alt=""/><br /><sub><b>Bill Ochieng</b></sub></a><br /></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/brum0505"><img src="https://avatars.githubusercontent.com/u/89281233?v=4" width="100px;" alt=""/><br /><sub><b>Brock Brumfield</b></sub></a><br /></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/aveetdesai"><img src="https://avatars.githubusercontent.com/u/89416744?v=4" width="100px;" alt=""/><br /><sub><b>Aveet Desai</b></sub></a><br /></td>
+  </tr>
+</table>
