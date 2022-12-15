@@ -29,8 +29,6 @@ For this plugin to work properly a few steps need to be taken carefully. First y
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ningerson2002"><img src="https://avatars.githubusercontent.com/u/89281233?v=4" width="100px;" alt=""/><br /><sub><b>Nic Ingerson</b></sub></a><br /></td>
-  </tr>
-  <tr>
     <td align="center"><a href="https://github.com/BillOchieng"><img src="https://avatars.githubusercontent.com/u/79288574?v=4" width="100px;" alt=""/><br /><sub><b>Bill Ochieng</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/brum0505"><img src="https://avatars.githubusercontent.com/u/89416744?v=4" width="100px;" alt=""/><br /><sub><b>Brock Brumfield</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/aveetdesai"><img src="https://avatars.githubusercontent.com/u/54788544?v=4" width="100px;" alt=""/><br /><sub><b>Aveet Desai</b></sub></a><br /></td>
