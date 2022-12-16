@@ -40,6 +40,10 @@ def fetch_info(service_account_file, scopes, base_repo_name, spreadsheet_id):
     )
 
 
+# This will use the values "n_key.json", ["https://www.googleapis.com/auth/spreadsheets"], "/gradebook-", and "1vbO2uR_nJv15Ev5LrcVaBl2FY0A37b3CHj1ABrQhaFA" as the arguments
+# for the service_account_file, scopes, base_repo_name, and spreadsheet_id parameters, respectively
+
+
 def get_grades():
     # Call the Sheets API
     result = (
@@ -48,29 +52,32 @@ def get_grades():
         .execute()
     )
     values = result.get("values", [])
-    student_grade_data = []
-    for row in values:
-        # Print the row, with each column separated by a comma
-        l = []
-        student_grades = ",".join(row)
-        l.append(student_grades)
-        student_grade_data.append(l)
+    student_grade_data = [",".join(row) for row in values]
     return student_grade_data
 
 
+# eliminates the inner loop and uses a list comprehension to create a list of strings,
+# each containing the comma-separated values of a row.
+
+
 def format_for_markdown(grade_data):
-    """Format student grade data for printing to a markdown.
-    Args:
-      grade_data: List of student grade data.
-    """
-    headers = []
+    # Extract the headers from the first row of the grade data
+    headers = grade_data[0]
+    # Remove the first row (headers) from the grade data
+    grade_data = grade_data[1:]
+    # Initialize an empty list to store the formatted grade data
     formatted_grade_data = []
-    # iterate through each row, and
-    # --> return a string containing each grade as well as the assignment name
-    for element in grade_data[0]:
-        headers.append(element)
-    grade_data.remove(headers)
-    print(grade_data)
+    # Iterate through each row in the grade data
+    for row in grade_data:
+        # Format the row as a string
+        row_string = ",".join(row)
+        # Add the formatted row to the list of formatted grade data
+        formatted_grade_data.append(row_string)
+    return formatted_grade_data
+
+
+# extracts the headers from the first row of the grade data, removes the first row from the grade data, and
+# then uses a loop to iterate through the remaining rows and format each one as a string.
 
 
 def main():
@@ -93,3 +100,35 @@ def main():
 
 
 format_for_markdown(get_grades())
+
+
+# Extract the code that interacts with the GitHub API into a separate function.
+def collect_config():
+    # Collect configuration information
+    manager.collect_config()
+
+
+# Extract the code that retrieves values from the spreadsheet into a separate function
+def retrieve_spreadsheet_values():
+    # Retrieve values from Sheet1 of the specified spreadsheet
+    sheet_values = (
+        sheet.values()
+        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM")
+        .execute()
+    )
+    values = sheet_values.get("values", [])
+
+
+# Extract the code that collects configuration information into a separate function
+def post_entries():
+    # Post all collected entries
+    manager.post_all()
+
+
+def main():
+    # Create a GithubManager object
+    manager = github_interaction.GithubManager()
+
+    collect_config()
+    post_entries()
+    retrieve_spreadsheet_values()
