@@ -77,6 +77,22 @@ def format_for_markdown(grade_data):
 
 
 # extracts the headers from the first row of the grade data, removes the first row from the grade data, and
+or 
+def get_grades():
+    # Call the Sheets API
+    result = (
+        sheet.values()
+        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM38")
+        .execute()
+    )
+    values = result.get("values", [])
+    student_grade_data = [",".join(row) for row in values]
+    formatted_grade_data = format_for_markdown(student_grade_data)
+    return formatted_grade_data
+# then call the function as 
+grade_data = get_grades()
+
+
 # then uses a loop to iterate through the remaining rows and format each one as a string.
 
 
