@@ -18,50 +18,78 @@ SAMPLE_SPREADSHEET_ID = "1vbO2uR_nJv15Ev5LrcVaBl2FY0A37b3CHj1ABrQhaFA"
 service = build("sheets", "v4", credentials=creds)
 sheet = service.spreadsheets()
 
+# This function definition creates a function called fetch_info that takes four parameters:
+# service_account_file, scopes, base_repo_name, and spreadsheet_id. When you call the function,
+# you can pass in the values for these parameters,
+# and the function will use those values to generate the credentials and fetch the info
+
+
+def fetch_info(service_account_file, scopes, base_repo_name, spreadsheet_id):
+    creds = service_account.Credentials.from_service_account_file(
+        service_account_file, scopes=scopes
+    )
+    service = build("sheets", "v4", credentials=creds)
+    sheet = service.spreadsheets()
+    # other code to fetch info using the service and sheet objects goes here
+    # You can call the function like this:
+    fetch_info(
+        "n_key.json",
+        ["https://www.googleapis.com/auth/spreadsheets"],
+        "/gradebook-",
+        "1vbO2uR_nJv15Ev5LrcVaBl2FY0A37b3CHj1ABrQhaFA",
+    )
+
 
 def get_grades():
-  # Call the Sheets API
-  result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                              range="Sheet1!A1:AM38").execute()
-  values = result.get('values', [])
-  student_grade_data = []
-  for row in values:
-    # Print the row, with each column separated by a comma
-    l = []
-    student_grades = (','.join(row))
-    l.append(student_grades)
-    student_grade_data.append(l)
-  return student_grade_data
-  
+    # Call the Sheets API
+    result = (
+        sheet.values()
+        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM38")
+        .execute()
+    )
+    values = result.get("values", [])
+    student_grade_data = []
+    for row in values:
+        # Print the row, with each column separated by a comma
+        l = []
+        student_grades = ",".join(row)
+        l.append(student_grades)
+        student_grade_data.append(l)
+    return student_grade_data
+
 
 def format_for_markdown(grade_data):
-  """Format student grade data for printing to a markdown.
-  Args:
-    grade_data: List of student grade data.
-  """
-  headers = []
-  formatted_grade_data = []
-  # iterate through each row, and
-  # --> return a string containing each grade as well as the assignment name
-  for element in grade_data[0]:
-    headers.append(element)
-  grade_data.remove(headers)
-  print(grade_data)
+    """Format student grade data for printing to a markdown.
+    Args:
+      grade_data: List of student grade data.
+    """
+    headers = []
+    formatted_grade_data = []
+    # iterate through each row, and
+    # --> return a string containing each grade as well as the assignment name
+    for element in grade_data[0]:
+        headers.append(element)
+    grade_data.remove(headers)
+    print(grade_data)
 
 
 def main():
-  my_manager = github_interaction.GithubManager()
-  my_manager.collect_config()
+    my_manager = github_interaction.GithubManager()
+    my_manager.collect_config()
 
-  # All collected entries can be posted at once
-  my_manager.post_all()
-  result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                              range="Sheet1!A1:AM").execute()
-  values = result.get('values', [])
+    # All collected entries can be posted at once
+    my_manager.post_all()
+    result = (
+        sheet.values()
+        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM")
+        .execute()
+    )
+    values = result.get("values", [])
 
-  # OR they can be posted individually by type
-  my_manager.post_issues()
-  my_manager.post_pull_requests()
-  my_manager.post_files()
+    # OR they can be posted individually by type
+    my_manager.post_issues()
+    my_manager.post_pull_requests()
+    my_manager.post_files()
+
 
 format_for_markdown(get_grades())
