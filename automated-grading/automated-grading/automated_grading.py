@@ -125,10 +125,28 @@ def post_entries():
     manager.post_all()
 
 
-def main():
+def create_github_manager():
     # Create a GithubManager object
     manager = github_interaction.GithubManager()
+    return manager
 
+
+def collect_and_post_data(manager):
     collect_config()
     post_entries()
+
+
+def retrieve_spreadsheet_values():
+    # Retrieve values from Sheet1 of the specified spreadsheet
+    sheet_values = (
+        sheet.values()
+        .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM")
+        .execute()
+    )
+    values = sheet_values.get("values", [])
+
+
+def main():
+    manager = create_github_manager()
+    collect_and_post_data(manager)
     retrieve_spreadsheet_values()
