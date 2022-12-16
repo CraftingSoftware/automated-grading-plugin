@@ -19,15 +19,14 @@ service = build("sheets", "v4", credentials=creds)
 
 # Call the Sheets API
 sheet = service.spreadsheets()
-<<<<<<< Updated upstream
-result = (
-    sheet.values()
-    .get(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Sheet1!A1:AM1")
-    .execute()
-)
-values = result.get("values", [])
+result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                            range="Sheet1!A1:AM38").execute()
+values = result.get('values', [])
 
-print(values)
+for row in values:
+  # Print the row, with each column separated by a comma
+  print(','.join(row))
+
 
 
 my_manager = github_interaction.GitHubManager()
