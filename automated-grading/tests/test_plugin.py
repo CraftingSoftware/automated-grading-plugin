@@ -1,7 +1,14 @@
 import unittest
 
 
-class TestCollectConfig(unittest.TestCase):
+class TestGithubManager(unittest.TestCase):
+    def test_create_github_manager(self):
+        # Call the create_github_manager function
+        manager = create_github_manager()
+
+        # Check that the returned object is a GithubManager instance
+        self.assertIsInstance(manager, github_interaction.GithubManager)
+
     def test_collect_config(self):
         # Set up test data
         expected_config = {...}
@@ -11,15 +18,6 @@ class TestCollectConfig(unittest.TestCase):
 
         # Check that the configuration was collected correctly
         self.assertEqual(manager.config, expected_config)
-
-
-class TestCreateGithubManager(unittest.TestCase):
-    def test_create_github_manager(self):
-        # Call the create_github_manager function
-        manager = create_github_manager()
-
-        # Check that the returned object is a GithubManager instance
-        self.assertIsInstance(manager, github_interaction.GithubManager)
 
 
 if __name__ == "__main__":
