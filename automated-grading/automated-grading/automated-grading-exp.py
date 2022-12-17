@@ -1,9 +1,7 @@
+import os
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
-
-from googleapiclient.discovery import build
-from google.oauth2 import service_account
-from sheetshuttle import github_interaction
+from sheetshuttle import github_interaction, sheet_collector, util
 
 
 # generate all the proper credentials needed to fetch info
@@ -35,17 +33,28 @@ for row in values[1:]:
     row_data[header] = row[i]
   rows.append(row_data)
 
+# User defined folder to store the markdown files
+folder = "student_grades"
+
+
+# Create the folder if it does not exist
+if not os.path.exists(folder):
+  os.makedirs(folder)
+
+# Prompt the user to enter the name of the repository and the access token
+#nrepository = input("Enter the name of the repository: ")
+# access_token = input("Enter the access token for your GitHub account: ")
+
 # Iterate over the rows and create a markdown file for each one
 for row in rows:
   # Get the name for the file from the first column of the row
   filename = row[headers[0]] + ".md"
-  with open(filename, "w") as f:
+  # Specify the path to the markdown file
+  filepath = os.path.join(folder, filename)
+  with open(filepath, "w") as f:
     # Write the contents of each column to the file as markdown
     for header in headers:
       f.write("**" + header + ":** " + row[header] + "\n")
 
-
-my_manager = github_interaction.GitHubManager()
-my_manager.collect_config()
-
-
+  # push the file to the GitHub repository
+  # github_interaction.push_to_github(filename, repository, access_token)
